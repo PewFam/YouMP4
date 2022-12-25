@@ -1,5 +1,5 @@
 # This is
-fully functional youtube vidéo downloader
+fully functional youtube video downloader
 
 # Do not
 start exe file in default terminal, you won't see the colors.
