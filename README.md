@@ -5,6 +5,6 @@ fully functional youtube video downloader
 start exe file in default terminal, you won't see the colors.
 
 
-requierments =>
+requirements =>
 
-pytube, pathlib, os, sys
+pytube, pathlib, os, sys, time
