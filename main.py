@@ -59,33 +59,27 @@ while True:
         typingPrint("\nEnter youtube link ( with https:// ):\n")
         link = input('\n')
         try:
-           trying=  YouTube(link)
+                trying=  YouTube(link)
         except:
-            if os ==  "nt" : os.system('cls')
-            else: os.system('clear')
-            typingPrint(f'{ font_colors.WARNING } /!\ This video does not exist or is not available now.{font_colors.FAIL}\n\n')
-            time.sleep(2)
-            continue
-        typingPrint(f'\n{font_colors.BOLD} In what folder do you want to proceed to the download ? ( {font_colors.WARNING}make sure to write the exact name of you folder, else video will automatically be downloaded in your "Download" folder{font_colors.ENDC} )')
+                if os ==  "nt" : os.system('cls')
+                else: os.system('clear')
+                typingPrint(f'{ font_colors.WARNING } /!\ This video does not exist or is not available now.{font_colors.FAIL}\n\n')
+                time.sleep(2)
+                continue
+        typingPrint(f'\n{font_colors.BOLD}In what folder do you want to proceed to the download ? ( {font_colors.WARNING}make sure to write the exact name of you folder, else video will automatically be downloaded in your "Download" folder{font_colors.ENDC} )')
         directory = input('\n\n')
-
-        try:
+        if directory == "":
+                directory = "Downloads"
             
-            dir = str(os.path.join(Path.home(), directory))
-            video = trying.streams.get_highest_resolution()
-            typingPrint(f"\nYour video :{font_colors.HEADER} {trying.title}{font_colors.OKCYAN}, is downloading right now in highest quality !\n")
-            video.download(dir)
-            print(f"\nSuccessfuly downloaded the video into the {directory} folder.\n")
-            
-        except:
-            if os ==  "nt" : os.system('cls')
-            else: os.system('clear')
-            typingPrint(f'{font_colors.WARNING} /!\ An error has occurred : your folder has not been found. Video will be downloaded in "Download" folder...')
-            typingPrint(f"\n\nYour video :{font_colors.HEADER} {trying.title}{font_colors.OKCYAN}, is downloading right now in highest quality !\n")
-            dir = str(os.path.join(Path.home(), "Downloads"))
-            video = trying.streams.get_highest_resolution()
-            video.download(dir)
-            print("\nSuccessfuly downloaded the video into the \"Download\" folder.\n")
-
-        
+           
+                
+        dir = str(os.path.join(Path.cwd())+ f'\{directory}')
+        video = trying.streams.get_highest_resolution()
+        typingPrint(f"\nYour video :{font_colors.HEADER} {trying.title}{font_colors.OKCYAN}, is downloading right now in highest quality !\n")
+        video.download(dir)
+        print(f"\nSuccessfuly downloaded the video into the {dir} folder.\n {Fore.LIGHTRED_EX}")
+        time.sleep(2)
+        clear()
+        print(Fore.CYAN+ payload)
+        print(Fore.GREEN + default +Fore.LIGHTRED_EX)
     
